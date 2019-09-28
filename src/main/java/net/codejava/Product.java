@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Product {
@@ -26,7 +27,8 @@ public class Product {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="ID_SEQ")
+    @SequenceGenerator(name = "ID_SEQ",sequenceName="SEQ_PRODUCT",allocationSize=1)
 	public Long getId() {
 		return id;
 	}
